@@ -19,6 +19,11 @@
   "packageManager": "npm@11.6.0",
   "workspaces": [
     "apps/*",
-    "packages/*"
-  ]
+    "packages/*",
+    "apps/backend/*"
+  ],
+  "dependencies": {
+    "@prisma/client": "^7.2.0",
+    "prisma": "^7.2.0"
+  }
 }

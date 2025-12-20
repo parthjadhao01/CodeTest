@@ -1,0 +1,226 @@
+import * as runtime from "@prisma/client/runtime/client";
+import type * as Prisma from "./prismaNamespace.ts";
+export type LogOptions<ClientOptions extends Prisma.PrismaClientOptions> = 'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never;
+export interface PrismaClientConstructor {
+    /**
+   * ## Prisma Client
+   *
+   * Type-safe database client for TypeScript
+   * @example
+   * ```
+   * const prisma = new PrismaClient()
+   * // Fetch zero or more Users
+   * const users = await prisma.user.findMany()
+   * ```
+   *
+   * Read more in our [docs](https://pris.ly/d/client).
+   */
+    new <Options extends Prisma.PrismaClientOptions = Prisma.PrismaClientOptions, LogOpts extends LogOptions<Options> = LogOptions<Options>, OmitOpts extends Prisma.PrismaClientOptions['omit'] = Options extends {
+        omit: infer U;
+    } ? U : Prisma.PrismaClientOptions['omit'], ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs>(options: Prisma.Subset<Options, Prisma.PrismaClientOptions>): PrismaClient<LogOpts, OmitOpts, ExtArgs>;
+}
+/**
+ * ## Prisma Client
+ *
+ * Type-safe database client for TypeScript
+ * @example
+ * ```
+ * const prisma = new PrismaClient()
+ * // Fetch zero or more Users
+ * const users = await prisma.user.findMany()
+ * ```
+ *
+ * Read more in our [docs](https://pris.ly/d/client).
+ */
+export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out OmitOpts extends Prisma.PrismaClientOptions['omit'] = undefined, in out ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['other'];
+    };
+    $on<V extends LogOpts>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): PrismaClient;
+    /**
+     * Connect with the database
+     */
+    $connect(): runtime.Types.Utils.JsPromise<void>;
+    /**
+     * Disconnect from the database
+     */
+    $disconnect(): runtime.Types.Utils.JsPromise<void>;
+    /**
+       * Executes a prepared raw query and returns the number of affected rows.
+       * @example
+       * ```
+       * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
+       * ```
+       *
+       * Read more in our [docs](https://pris.ly/d/raw-queries).
+       */
+    $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>;
+    /**
+     * Executes a raw query and returns the number of affected rows.
+     * Susceptible to SQL injections, see documentation.
+     * @example
+     * ```
+     * const result = await prisma.$executeRawUnsafe('UPDATE User SET cool = $1 WHERE email = $2 ;', true, 'user@email.com')
+     * ```
+     *
+     * Read more in our [docs](https://pris.ly/d/raw-queries).
+     */
+    $executeRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<number>;
+    /**
+     * Performs a prepared raw query and returns the `SELECT` data.
+     * @example
+     * ```
+     * const result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'user@email.com'};`
+     * ```
+     *
+     * Read more in our [docs](https://pris.ly/d/raw-queries).
+     */
+    $queryRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<T>;
+    /**
+     * Performs a raw query and returns the `SELECT` data.
+     * Susceptible to SQL injections, see documentation.
+     * @example
+     * ```
+     * const result = await prisma.$queryRawUnsafe('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'user@email.com')
+     * ```
+     *
+     * Read more in our [docs](https://pris.ly/d/raw-queries).
+     */
+    $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
+    /**
+     * Allows the running of a sequence of read/write operations that are guaranteed to either succeed or fail as a whole.
+     * @example
+     * ```
+     * const [george, bob, alice] = await prisma.$transaction([
+     *   prisma.user.create({ data: { name: 'George' } }),
+     *   prisma.user.create({ data: { name: 'Bob' } }),
+     *   prisma.user.create({ data: { name: 'Alice' } }),
+     * ])
+     * ```
+     *
+     * Read more in our [docs](https://www.prisma.io/docs/concepts/components/prisma-client/transactions).
+     */
+    $transaction<P extends Prisma.PrismaPromise<any>[]>(arg: [...P], options?: {
+        isolationLevel?: Prisma.TransactionIsolationLevel;
+    }): runtime.Types.Utils.JsPromise<runtime.Types.Utils.UnwrapTuple<P>>;
+    $transaction<R>(fn: (prisma: Omit<PrismaClient, runtime.ITXClientDenyList>) => runtime.Types.Utils.JsPromise<R>, options?: {
+        maxWait?: number;
+        timeout?: number;
+        isolationLevel?: Prisma.TransactionIsolationLevel;
+    }): runtime.Types.Utils.JsPromise<R>;
+    $extends: runtime.Types.Extensions.ExtendsHook<"extends", Prisma.TypeMapCb<OmitOpts>, ExtArgs, runtime.Types.Utils.Call<Prisma.TypeMapCb<OmitOpts>, {
+        extArgs: ExtArgs;
+    }>>;
+    /**
+ * `prisma.user`: Exposes CRUD operations for the **User** model.
+  * Example usage:
+  * ```ts
+  * // Fetch zero or more Users
+  * const users = await prisma.user.findMany()
+  * ```
+  */
+    get user(): Prisma.UserDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.contest`: Exposes CRUD operations for the **Contest** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more Contests
+      * const contests = await prisma.contest.findMany()
+      * ```
+      */
+    get contest(): Prisma.ContestDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.contestProblem`: Exposes CRUD operations for the **ContestProblem** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more ContestProblems
+      * const contestProblems = await prisma.contestProblem.findMany()
+      * ```
+      */
+    get contestProblem(): Prisma.ContestProblemDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.problem`: Exposes CRUD operations for the **Problem** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more Problems
+      * const problems = await prisma.problem.findMany()
+      * ```
+      */
+    get problem(): Prisma.ProblemDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.defaultCode`: Exposes CRUD operations for the **DefaultCode** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more DefaultCodes
+      * const defaultCodes = await prisma.defaultCode.findMany()
+      * ```
+      */
+    get defaultCode(): Prisma.DefaultCodeDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.submission`: Exposes CRUD operations for the **Submission** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more Submissions
+      * const submissions = await prisma.submission.findMany()
+      * ```
+      */
+    get submission(): Prisma.SubmissionDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.language`: Exposes CRUD operations for the **Language** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more Languages
+      * const languages = await prisma.language.findMany()
+      * ```
+      */
+    get language(): Prisma.LanguageDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.testCase`: Exposes CRUD operations for the **TestCase** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more TestCases
+      * const testCases = await prisma.testCase.findMany()
+      * ```
+      */
+    get testCase(): Prisma.TestCaseDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.contestSubmission`: Exposes CRUD operations for the **ContestSubmission** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more ContestSubmissions
+      * const contestSubmissions = await prisma.contestSubmission.findMany()
+      * ```
+      */
+    get contestSubmission(): Prisma.ContestSubmissionDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.contestPoints`: Exposes CRUD operations for the **ContestPoints** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more ContestPoints
+      * const contestPoints = await prisma.contestPoints.findMany()
+      * ```
+      */
+    get contestPoints(): Prisma.ContestPointsDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+}
+export declare function getPrismaClientClass(): PrismaClientConstructor;
+//# sourceMappingURL=class.d.ts.map

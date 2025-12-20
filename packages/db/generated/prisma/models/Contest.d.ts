@@ -1,0 +1,1539 @@
+import type * as runtime from "@prisma/client/runtime/client";
+import type * as Prisma from "../internal/prismaNamespace.ts";
+/**
+ * Model Contest
+ *
+ */
+export type ContestModel = runtime.Types.Result.DefaultSelection<Prisma.$ContestPayload>;
+export type AggregateContest = {
+    _count: ContestCountAggregateOutputType | null;
+    _min: ContestMinAggregateOutputType | null;
+    _max: ContestMaxAggregateOutputType | null;
+};
+export type ContestMinAggregateOutputType = {
+    id: string | null;
+    title: string | null;
+    description: string | null;
+    startTime: Date | null;
+    hidden: boolean | null;
+    endTime: Date | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+    leaderBoard: boolean | null;
+};
+export type ContestMaxAggregateOutputType = {
+    id: string | null;
+    title: string | null;
+    description: string | null;
+    startTime: Date | null;
+    hidden: boolean | null;
+    endTime: Date | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+    leaderBoard: boolean | null;
+};
+export type ContestCountAggregateOutputType = {
+    id: number;
+    title: number;
+    description: number;
+    startTime: number;
+    hidden: number;
+    endTime: number;
+    createdAt: number;
+    updatedAt: number;
+    leaderBoard: number;
+    _all: number;
+};
+export type ContestMinAggregateInputType = {
+    id?: true;
+    title?: true;
+    description?: true;
+    startTime?: true;
+    hidden?: true;
+    endTime?: true;
+    createdAt?: true;
+    updatedAt?: true;
+    leaderBoard?: true;
+};
+export type ContestMaxAggregateInputType = {
+    id?: true;
+    title?: true;
+    description?: true;
+    startTime?: true;
+    hidden?: true;
+    endTime?: true;
+    createdAt?: true;
+    updatedAt?: true;
+    leaderBoard?: true;
+};
+export type ContestCountAggregateInputType = {
+    id?: true;
+    title?: true;
+    description?: true;
+    startTime?: true;
+    hidden?: true;
+    endTime?: true;
+    createdAt?: true;
+    updatedAt?: true;
+    leaderBoard?: true;
+    _all?: true;
+};
+export type ContestAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which Contest to aggregate.
+     */
+    where?: Prisma.ContestWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Contests to fetch.
+     */
+    orderBy?: Prisma.ContestOrderByWithRelationInput | Prisma.ContestOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: Prisma.ContestWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Contests from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Contests.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned Contests
+    **/
+    _count?: true | ContestCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+    **/
+    _min?: ContestMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+    **/
+    _max?: ContestMaxAggregateInputType;
+};
+export type GetContestAggregateType<T extends ContestAggregateArgs> = {
+    [P in keyof T & keyof AggregateContest]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateContest[P]> : Prisma.GetScalarType<T[P], AggregateContest[P]>;
+};
+export type ContestGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.ContestWhereInput;
+    orderBy?: Prisma.ContestOrderByWithAggregationInput | Prisma.ContestOrderByWithAggregationInput[];
+    by: Prisma.ContestScalarFieldEnum[] | Prisma.ContestScalarFieldEnum;
+    having?: Prisma.ContestScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: ContestCountAggregateInputType | true;
+    _min?: ContestMinAggregateInputType;
+    _max?: ContestMaxAggregateInputType;
+};
+export type ContestGroupByOutputType = {
+    id: string;
+    title: string;
+    description: string;
+    startTime: Date;
+    hidden: boolean;
+    endTime: Date;
+    createdAt: Date;
+    updatedAt: Date;
+    leaderBoard: boolean;
+    _count: ContestCountAggregateOutputType | null;
+    _min: ContestMinAggregateOutputType | null;
+    _max: ContestMaxAggregateOutputType | null;
+};
+type GetContestGroupByPayload<T extends ContestGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<ContestGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof ContestGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], ContestGroupByOutputType[P]> : Prisma.GetScalarType<T[P], ContestGroupByOutputType[P]>;
+}>>;
+export type ContestWhereInput = {
+    AND?: Prisma.ContestWhereInput | Prisma.ContestWhereInput[];
+    OR?: Prisma.ContestWhereInput[];
+    NOT?: Prisma.ContestWhereInput | Prisma.ContestWhereInput[];
+    id?: Prisma.StringFilter<"Contest"> | string;
+    title?: Prisma.StringFilter<"Contest"> | string;
+    description?: Prisma.StringFilter<"Contest"> | string;
+    startTime?: Prisma.DateTimeFilter<"Contest"> | Date | string;
+    hidden?: Prisma.BoolFilter<"Contest"> | boolean;
+    endTime?: Prisma.DateTimeFilter<"Contest"> | Date | string;
+    createdAt?: Prisma.DateTimeFilter<"Contest"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"Contest"> | Date | string;
+    leaderBoard?: Prisma.BoolFilter<"Contest"> | boolean;
+    submission?: Prisma.SubmissionListRelationFilter;
+    problem?: Prisma.ContestProblemListRelationFilter;
+    contestSubmission?: Prisma.ContestSubmissionListRelationFilter;
+};
+export type ContestOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    title?: Prisma.SortOrder;
+    description?: Prisma.SortOrder;
+    startTime?: Prisma.SortOrder;
+    hidden?: Prisma.SortOrder;
+    endTime?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    leaderBoard?: Prisma.SortOrder;
+    submission?: Prisma.SubmissionOrderByRelationAggregateInput;
+    problem?: Prisma.ContestProblemOrderByRelationAggregateInput;
+    contestSubmission?: Prisma.ContestSubmissionOrderByRelationAggregateInput;
+};
+export type ContestWhereUniqueInput = Prisma.AtLeast<{
+    id?: string;
+    AND?: Prisma.ContestWhereInput | Prisma.ContestWhereInput[];
+    OR?: Prisma.ContestWhereInput[];
+    NOT?: Prisma.ContestWhereInput | Prisma.ContestWhereInput[];
+    title?: Prisma.StringFilter<"Contest"> | string;
+    description?: Prisma.StringFilter<"Contest"> | string;
+    startTime?: Prisma.DateTimeFilter<"Contest"> | Date | string;
+    hidden?: Prisma.BoolFilter<"Contest"> | boolean;
+    endTime?: Prisma.DateTimeFilter<"Contest"> | Date | string;
+    createdAt?: Prisma.DateTimeFilter<"Contest"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"Contest"> | Date | string;
+    leaderBoard?: Prisma.BoolFilter<"Contest"> | boolean;
+    submission?: Prisma.SubmissionListRelationFilter;
+    problem?: Prisma.ContestProblemListRelationFilter;
+    contestSubmission?: Prisma.ContestSubmissionListRelationFilter;
+}, "id">;
+export type ContestOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    title?: Prisma.SortOrder;
+    description?: Prisma.SortOrder;
+    startTime?: Prisma.SortOrder;
+    hidden?: Prisma.SortOrder;
+    endTime?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    leaderBoard?: Prisma.SortOrder;
+    _count?: Prisma.ContestCountOrderByAggregateInput;
+    _max?: Prisma.ContestMaxOrderByAggregateInput;
+    _min?: Prisma.ContestMinOrderByAggregateInput;
+};
+export type ContestScalarWhereWithAggregatesInput = {
+    AND?: Prisma.ContestScalarWhereWithAggregatesInput | Prisma.ContestScalarWhereWithAggregatesInput[];
+    OR?: Prisma.ContestScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.ContestScalarWhereWithAggregatesInput | Prisma.ContestScalarWhereWithAggregatesInput[];
+    id?: Prisma.StringWithAggregatesFilter<"Contest"> | string;
+    title?: Prisma.StringWithAggregatesFilter<"Contest"> | string;
+    description?: Prisma.StringWithAggregatesFilter<"Contest"> | string;
+    startTime?: Prisma.DateTimeWithAggregatesFilter<"Contest"> | Date | string;
+    hidden?: Prisma.BoolWithAggregatesFilter<"Contest"> | boolean;
+    endTime?: Prisma.DateTimeWithAggregatesFilter<"Contest"> | Date | string;
+    createdAt?: Prisma.DateTimeWithAggregatesFilter<"Contest"> | Date | string;
+    updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Contest"> | Date | string;
+    leaderBoard?: Prisma.BoolWithAggregatesFilter<"Contest"> | boolean;
+};
+export type ContestCreateInput = {
+    id?: string;
+    title: string;
+    description: string;
+    startTime: Date | string;
+    hidden?: boolean;
+    endTime: Date | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    leaderBoard?: boolean;
+    submission?: Prisma.SubmissionCreateNestedManyWithoutActiveContestInput;
+    problem?: Prisma.ContestProblemCreateNestedManyWithoutContestInput;
+    contestSubmission?: Prisma.ContestSubmissionCreateNestedManyWithoutContestInput;
+};
+export type ContestUncheckedCreateInput = {
+    id?: string;
+    title: string;
+    description: string;
+    startTime: Date | string;
+    hidden?: boolean;
+    endTime: Date | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    leaderBoard?: boolean;
+    submission?: Prisma.SubmissionUncheckedCreateNestedManyWithoutActiveContestInput;
+    problem?: Prisma.ContestProblemUncheckedCreateNestedManyWithoutContestInput;
+    contestSubmission?: Prisma.ContestSubmissionUncheckedCreateNestedManyWithoutContestInput;
+};
+export type ContestUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    hidden?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    leaderBoard?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    submission?: Prisma.SubmissionUpdateManyWithoutActiveContestNestedInput;
+    problem?: Prisma.ContestProblemUpdateManyWithoutContestNestedInput;
+    contestSubmission?: Prisma.ContestSubmissionUpdateManyWithoutContestNestedInput;
+};
+export type ContestUncheckedUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    hidden?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    leaderBoard?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    submission?: Prisma.SubmissionUncheckedUpdateManyWithoutActiveContestNestedInput;
+    problem?: Prisma.ContestProblemUncheckedUpdateManyWithoutContestNestedInput;
+    contestSubmission?: Prisma.ContestSubmissionUncheckedUpdateManyWithoutContestNestedInput;
+};
+export type ContestCreateManyInput = {
+    id?: string;
+    title: string;
+    description: string;
+    startTime: Date | string;
+    hidden?: boolean;
+    endTime: Date | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    leaderBoard?: boolean;
+};
+export type ContestUpdateManyMutationInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    hidden?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    leaderBoard?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+};
+export type ContestUncheckedUpdateManyInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    hidden?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    leaderBoard?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+};
+export type ContestCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    title?: Prisma.SortOrder;
+    description?: Prisma.SortOrder;
+    startTime?: Prisma.SortOrder;
+    hidden?: Prisma.SortOrder;
+    endTime?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    leaderBoard?: Prisma.SortOrder;
+};
+export type ContestMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    title?: Prisma.SortOrder;
+    description?: Prisma.SortOrder;
+    startTime?: Prisma.SortOrder;
+    hidden?: Prisma.SortOrder;
+    endTime?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    leaderBoard?: Prisma.SortOrder;
+};
+export type ContestMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    title?: Prisma.SortOrder;
+    description?: Prisma.SortOrder;
+    startTime?: Prisma.SortOrder;
+    hidden?: Prisma.SortOrder;
+    endTime?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    leaderBoard?: Prisma.SortOrder;
+};
+export type ContestScalarRelationFilter = {
+    is?: Prisma.ContestWhereInput;
+    isNot?: Prisma.ContestWhereInput;
+};
+export type ContestNullableScalarRelationFilter = {
+    is?: Prisma.ContestWhereInput | null;
+    isNot?: Prisma.ContestWhereInput | null;
+};
+export type BoolFieldUpdateOperationsInput = {
+    set?: boolean;
+};
+export type ContestCreateNestedOneWithoutProblemInput = {
+    create?: Prisma.XOR<Prisma.ContestCreateWithoutProblemInput, Prisma.ContestUncheckedCreateWithoutProblemInput>;
+    connectOrCreate?: Prisma.ContestCreateOrConnectWithoutProblemInput;
+    connect?: Prisma.ContestWhereUniqueInput;
+};
+export type ContestUpdateOneRequiredWithoutProblemNestedInput = {
+    create?: Prisma.XOR<Prisma.ContestCreateWithoutProblemInput, Prisma.ContestUncheckedCreateWithoutProblemInput>;
+    connectOrCreate?: Prisma.ContestCreateOrConnectWithoutProblemInput;
+    upsert?: Prisma.ContestUpsertWithoutProblemInput;
+    connect?: Prisma.ContestWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.ContestUpdateToOneWithWhereWithoutProblemInput, Prisma.ContestUpdateWithoutProblemInput>, Prisma.ContestUncheckedUpdateWithoutProblemInput>;
+};
+export type ContestCreateNestedOneWithoutSubmissionInput = {
+    create?: Prisma.XOR<Prisma.ContestCreateWithoutSubmissionInput, Prisma.ContestUncheckedCreateWithoutSubmissionInput>;
+    connectOrCreate?: Prisma.ContestCreateOrConnectWithoutSubmissionInput;
+    connect?: Prisma.ContestWhereUniqueInput;
+};
+export type ContestUpdateOneWithoutSubmissionNestedInput = {
+    create?: Prisma.XOR<Prisma.ContestCreateWithoutSubmissionInput, Prisma.ContestUncheckedCreateWithoutSubmissionInput>;
+    connectOrCreate?: Prisma.ContestCreateOrConnectWithoutSubmissionInput;
+    upsert?: Prisma.ContestUpsertWithoutSubmissionInput;
+    disconnect?: Prisma.ContestWhereInput | boolean;
+    delete?: Prisma.ContestWhereInput | boolean;
+    connect?: Prisma.ContestWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.ContestUpdateToOneWithWhereWithoutSubmissionInput, Prisma.ContestUpdateWithoutSubmissionInput>, Prisma.ContestUncheckedUpdateWithoutSubmissionInput>;
+};
+export type ContestCreateNestedOneWithoutContestSubmissionInput = {
+    create?: Prisma.XOR<Prisma.ContestCreateWithoutContestSubmissionInput, Prisma.ContestUncheckedCreateWithoutContestSubmissionInput>;
+    connectOrCreate?: Prisma.ContestCreateOrConnectWithoutContestSubmissionInput;
+    connect?: Prisma.ContestWhereUniqueInput;
+};
+export type ContestUpdateOneRequiredWithoutContestSubmissionNestedInput = {
+    create?: Prisma.XOR<Prisma.ContestCreateWithoutContestSubmissionInput, Prisma.ContestUncheckedCreateWithoutContestSubmissionInput>;
+    connectOrCreate?: Prisma.ContestCreateOrConnectWithoutContestSubmissionInput;
+    upsert?: Prisma.ContestUpsertWithoutContestSubmissionInput;
+    connect?: Prisma.ContestWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.ContestUpdateToOneWithWhereWithoutContestSubmissionInput, Prisma.ContestUpdateWithoutContestSubmissionInput>, Prisma.ContestUncheckedUpdateWithoutContestSubmissionInput>;
+};
+export type ContestCreateWithoutProblemInput = {
+    id?: string;
+    title: string;
+    description: string;
+    startTime: Date | string;
+    hidden?: boolean;
+    endTime: Date | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    leaderBoard?: boolean;
+    submission?: Prisma.SubmissionCreateNestedManyWithoutActiveContestInput;
+    contestSubmission?: Prisma.ContestSubmissionCreateNestedManyWithoutContestInput;
+};
+export type ContestUncheckedCreateWithoutProblemInput = {
+    id?: string;
+    title: string;
+    description: string;
+    startTime: Date | string;
+    hidden?: boolean;
+    endTime: Date | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    leaderBoard?: boolean;
+    submission?: Prisma.SubmissionUncheckedCreateNestedManyWithoutActiveContestInput;
+    contestSubmission?: Prisma.ContestSubmissionUncheckedCreateNestedManyWithoutContestInput;
+};
+export type ContestCreateOrConnectWithoutProblemInput = {
+    where: Prisma.ContestWhereUniqueInput;
+    create: Prisma.XOR<Prisma.ContestCreateWithoutProblemInput, Prisma.ContestUncheckedCreateWithoutProblemInput>;
+};
+export type ContestUpsertWithoutProblemInput = {
+    update: Prisma.XOR<Prisma.ContestUpdateWithoutProblemInput, Prisma.ContestUncheckedUpdateWithoutProblemInput>;
+    create: Prisma.XOR<Prisma.ContestCreateWithoutProblemInput, Prisma.ContestUncheckedCreateWithoutProblemInput>;
+    where?: Prisma.ContestWhereInput;
+};
+export type ContestUpdateToOneWithWhereWithoutProblemInput = {
+    where?: Prisma.ContestWhereInput;
+    data: Prisma.XOR<Prisma.ContestUpdateWithoutProblemInput, Prisma.ContestUncheckedUpdateWithoutProblemInput>;
+};
+export type ContestUpdateWithoutProblemInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    hidden?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    leaderBoard?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    submission?: Prisma.SubmissionUpdateManyWithoutActiveContestNestedInput;
+    contestSubmission?: Prisma.ContestSubmissionUpdateManyWithoutContestNestedInput;
+};
+export type ContestUncheckedUpdateWithoutProblemInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    hidden?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    leaderBoard?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    submission?: Prisma.SubmissionUncheckedUpdateManyWithoutActiveContestNestedInput;
+    contestSubmission?: Prisma.ContestSubmissionUncheckedUpdateManyWithoutContestNestedInput;
+};
+export type ContestCreateWithoutSubmissionInput = {
+    id?: string;
+    title: string;
+    description: string;
+    startTime: Date | string;
+    hidden?: boolean;
+    endTime: Date | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    leaderBoard?: boolean;
+    problem?: Prisma.ContestProblemCreateNestedManyWithoutContestInput;
+    contestSubmission?: Prisma.ContestSubmissionCreateNestedManyWithoutContestInput;
+};
+export type ContestUncheckedCreateWithoutSubmissionInput = {
+    id?: string;
+    title: string;
+    description: string;
+    startTime: Date | string;
+    hidden?: boolean;
+    endTime: Date | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    leaderBoard?: boolean;
+    problem?: Prisma.ContestProblemUncheckedCreateNestedManyWithoutContestInput;
+    contestSubmission?: Prisma.ContestSubmissionUncheckedCreateNestedManyWithoutContestInput;
+};
+export type ContestCreateOrConnectWithoutSubmissionInput = {
+    where: Prisma.ContestWhereUniqueInput;
+    create: Prisma.XOR<Prisma.ContestCreateWithoutSubmissionInput, Prisma.ContestUncheckedCreateWithoutSubmissionInput>;
+};
+export type ContestUpsertWithoutSubmissionInput = {
+    update: Prisma.XOR<Prisma.ContestUpdateWithoutSubmissionInput, Prisma.ContestUncheckedUpdateWithoutSubmissionInput>;
+    create: Prisma.XOR<Prisma.ContestCreateWithoutSubmissionInput, Prisma.ContestUncheckedCreateWithoutSubmissionInput>;
+    where?: Prisma.ContestWhereInput;
+};
+export type ContestUpdateToOneWithWhereWithoutSubmissionInput = {
+    where?: Prisma.ContestWhereInput;
+    data: Prisma.XOR<Prisma.ContestUpdateWithoutSubmissionInput, Prisma.ContestUncheckedUpdateWithoutSubmissionInput>;
+};
+export type ContestUpdateWithoutSubmissionInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    hidden?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    leaderBoard?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    problem?: Prisma.ContestProblemUpdateManyWithoutContestNestedInput;
+    contestSubmission?: Prisma.ContestSubmissionUpdateManyWithoutContestNestedInput;
+};
+export type ContestUncheckedUpdateWithoutSubmissionInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    hidden?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    leaderBoard?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    problem?: Prisma.ContestProblemUncheckedUpdateManyWithoutContestNestedInput;
+    contestSubmission?: Prisma.ContestSubmissionUncheckedUpdateManyWithoutContestNestedInput;
+};
+export type ContestCreateWithoutContestSubmissionInput = {
+    id?: string;
+    title: string;
+    description: string;
+    startTime: Date | string;
+    hidden?: boolean;
+    endTime: Date | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    leaderBoard?: boolean;
+    submission?: Prisma.SubmissionCreateNestedManyWithoutActiveContestInput;
+    problem?: Prisma.ContestProblemCreateNestedManyWithoutContestInput;
+};
+export type ContestUncheckedCreateWithoutContestSubmissionInput = {
+    id?: string;
+    title: string;
+    description: string;
+    startTime: Date | string;
+    hidden?: boolean;
+    endTime: Date | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    leaderBoard?: boolean;
+    submission?: Prisma.SubmissionUncheckedCreateNestedManyWithoutActiveContestInput;
+    problem?: Prisma.ContestProblemUncheckedCreateNestedManyWithoutContestInput;
+};
+export type ContestCreateOrConnectWithoutContestSubmissionInput = {
+    where: Prisma.ContestWhereUniqueInput;
+    create: Prisma.XOR<Prisma.ContestCreateWithoutContestSubmissionInput, Prisma.ContestUncheckedCreateWithoutContestSubmissionInput>;
+};
+export type ContestUpsertWithoutContestSubmissionInput = {
+    update: Prisma.XOR<Prisma.ContestUpdateWithoutContestSubmissionInput, Prisma.ContestUncheckedUpdateWithoutContestSubmissionInput>;
+    create: Prisma.XOR<Prisma.ContestCreateWithoutContestSubmissionInput, Prisma.ContestUncheckedCreateWithoutContestSubmissionInput>;
+    where?: Prisma.ContestWhereInput;
+};
+export type ContestUpdateToOneWithWhereWithoutContestSubmissionInput = {
+    where?: Prisma.ContestWhereInput;
+    data: Prisma.XOR<Prisma.ContestUpdateWithoutContestSubmissionInput, Prisma.ContestUncheckedUpdateWithoutContestSubmissionInput>;
+};
+export type ContestUpdateWithoutContestSubmissionInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    hidden?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    leaderBoard?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    submission?: Prisma.SubmissionUpdateManyWithoutActiveContestNestedInput;
+    problem?: Prisma.ContestProblemUpdateManyWithoutContestNestedInput;
+};
+export type ContestUncheckedUpdateWithoutContestSubmissionInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.StringFieldUpdateOperationsInput | string;
+    startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    hidden?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    endTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    leaderBoard?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    submission?: Prisma.SubmissionUncheckedUpdateManyWithoutActiveContestNestedInput;
+    problem?: Prisma.ContestProblemUncheckedUpdateManyWithoutContestNestedInput;
+};
+/**
+ * Count Type ContestCountOutputType
+ */
+export type ContestCountOutputType = {
+    submission: number;
+    problem: number;
+    contestSubmission: number;
+};
+export type ContestCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    submission?: boolean | ContestCountOutputTypeCountSubmissionArgs;
+    problem?: boolean | ContestCountOutputTypeCountProblemArgs;
+    contestSubmission?: boolean | ContestCountOutputTypeCountContestSubmissionArgs;
+};
+/**
+ * ContestCountOutputType without action
+ */
+export type ContestCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContestCountOutputType
+     */
+    select?: Prisma.ContestCountOutputTypeSelect<ExtArgs> | null;
+};
+/**
+ * ContestCountOutputType without action
+ */
+export type ContestCountOutputTypeCountSubmissionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.SubmissionWhereInput;
+};
+/**
+ * ContestCountOutputType without action
+ */
+export type ContestCountOutputTypeCountProblemArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.ContestProblemWhereInput;
+};
+/**
+ * ContestCountOutputType without action
+ */
+export type ContestCountOutputTypeCountContestSubmissionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.ContestSubmissionWhereInput;
+};
+export type ContestSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    title?: boolean;
+    description?: boolean;
+    startTime?: boolean;
+    hidden?: boolean;
+    endTime?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    leaderBoard?: boolean;
+    submission?: boolean | Prisma.Contest$submissionArgs<ExtArgs>;
+    problem?: boolean | Prisma.Contest$problemArgs<ExtArgs>;
+    contestSubmission?: boolean | Prisma.Contest$contestSubmissionArgs<ExtArgs>;
+    _count?: boolean | Prisma.ContestCountOutputTypeDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["contest"]>;
+export type ContestSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    title?: boolean;
+    description?: boolean;
+    startTime?: boolean;
+    hidden?: boolean;
+    endTime?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    leaderBoard?: boolean;
+}, ExtArgs["result"]["contest"]>;
+export type ContestSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    title?: boolean;
+    description?: boolean;
+    startTime?: boolean;
+    hidden?: boolean;
+    endTime?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    leaderBoard?: boolean;
+}, ExtArgs["result"]["contest"]>;
+export type ContestSelectScalar = {
+    id?: boolean;
+    title?: boolean;
+    description?: boolean;
+    startTime?: boolean;
+    hidden?: boolean;
+    endTime?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    leaderBoard?: boolean;
+};
+export type ContestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "startTime" | "hidden" | "endTime" | "createdAt" | "updatedAt" | "leaderBoard", ExtArgs["result"]["contest"]>;
+export type ContestInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    submission?: boolean | Prisma.Contest$submissionArgs<ExtArgs>;
+    problem?: boolean | Prisma.Contest$problemArgs<ExtArgs>;
+    contestSubmission?: boolean | Prisma.Contest$contestSubmissionArgs<ExtArgs>;
+    _count?: boolean | Prisma.ContestCountOutputTypeDefaultArgs<ExtArgs>;
+};
+export type ContestIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {};
+export type ContestIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {};
+export type $ContestPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "Contest";
+    objects: {
+        submission: Prisma.$SubmissionPayload<ExtArgs>[];
+        problem: Prisma.$ContestProblemPayload<ExtArgs>[];
+        contestSubmission: Prisma.$ContestSubmissionPayload<ExtArgs>[];
+    };
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: string;
+        title: string;
+        description: string;
+        startTime: Date;
+        hidden: boolean;
+        endTime: Date;
+        createdAt: Date;
+        updatedAt: Date;
+        leaderBoard: boolean;
+    }, ExtArgs["result"]["contest"]>;
+    composites: {};
+};
+export type ContestGetPayload<S extends boolean | null | undefined | ContestDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$ContestPayload, S>;
+export type ContestCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<ContestFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: ContestCountAggregateInputType | true;
+};
+export interface ContestDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['Contest'];
+        meta: {
+            name: 'Contest';
+        };
+    };
+    /**
+     * Find zero or one Contest that matches the filter.
+     * @param {ContestFindUniqueArgs} args - Arguments to find a Contest
+     * @example
+     * // Get one Contest
+     * const contest = await prisma.contest.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ContestFindUniqueArgs>(args: Prisma.SelectSubset<T, ContestFindUniqueArgs<ExtArgs>>): Prisma.Prisma__ContestClient<runtime.Types.Result.GetResult<Prisma.$ContestPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find one Contest that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ContestFindUniqueOrThrowArgs} args - Arguments to find a Contest
+     * @example
+     * // Get one Contest
+     * const contest = await prisma.contest.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ContestFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, ContestFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__ContestClient<runtime.Types.Result.GetResult<Prisma.$ContestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first Contest that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContestFindFirstArgs} args - Arguments to find a Contest
+     * @example
+     * // Get one Contest
+     * const contest = await prisma.contest.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ContestFindFirstArgs>(args?: Prisma.SelectSubset<T, ContestFindFirstArgs<ExtArgs>>): Prisma.Prisma__ContestClient<runtime.Types.Result.GetResult<Prisma.$ContestPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first Contest that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContestFindFirstOrThrowArgs} args - Arguments to find a Contest
+     * @example
+     * // Get one Contest
+     * const contest = await prisma.contest.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ContestFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, ContestFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__ContestClient<runtime.Types.Result.GetResult<Prisma.$ContestPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find zero or more Contests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Contests
+     * const contests = await prisma.contest.findMany()
+     *
+     * // Get first 10 Contests
+     * const contests = await prisma.contest.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const contestWithIdOnly = await prisma.contest.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends ContestFindManyArgs>(args?: Prisma.SelectSubset<T, ContestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    /**
+     * Create a Contest.
+     * @param {ContestCreateArgs} args - Arguments to create a Contest.
+     * @example
+     * // Create one Contest
+     * const Contest = await prisma.contest.create({
+     *   data: {
+     *     // ... data to create a Contest
+     *   }
+     * })
+     *
+     */
+    create<T extends ContestCreateArgs>(args: Prisma.SelectSubset<T, ContestCreateArgs<ExtArgs>>): Prisma.Prisma__ContestClient<runtime.Types.Result.GetResult<Prisma.$ContestPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Create many Contests.
+     * @param {ContestCreateManyArgs} args - Arguments to create many Contests.
+     * @example
+     * // Create many Contests
+     * const contest = await prisma.contest.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends ContestCreateManyArgs>(args?: Prisma.SelectSubset<T, ContestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Create many Contests and returns the data saved in the database.
+     * @param {ContestCreateManyAndReturnArgs} args - Arguments to create many Contests.
+     * @example
+     * // Create many Contests
+     * const contest = await prisma.contest.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many Contests and only return the `id`
+     * const contestWithIdOnly = await prisma.contest.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends ContestCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, ContestCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContestPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Delete a Contest.
+     * @param {ContestDeleteArgs} args - Arguments to delete one Contest.
+     * @example
+     * // Delete one Contest
+     * const Contest = await prisma.contest.delete({
+     *   where: {
+     *     // ... filter to delete one Contest
+     *   }
+     * })
+     *
+     */
+    delete<T extends ContestDeleteArgs>(args: Prisma.SelectSubset<T, ContestDeleteArgs<ExtArgs>>): Prisma.Prisma__ContestClient<runtime.Types.Result.GetResult<Prisma.$ContestPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Update one Contest.
+     * @param {ContestUpdateArgs} args - Arguments to update one Contest.
+     * @example
+     * // Update one Contest
+     * const contest = await prisma.contest.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends ContestUpdateArgs>(args: Prisma.SelectSubset<T, ContestUpdateArgs<ExtArgs>>): Prisma.Prisma__ContestClient<runtime.Types.Result.GetResult<Prisma.$ContestPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Delete zero or more Contests.
+     * @param {ContestDeleteManyArgs} args - Arguments to filter Contests to delete.
+     * @example
+     * // Delete a few Contests
+     * const { count } = await prisma.contest.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends ContestDeleteManyArgs>(args?: Prisma.SelectSubset<T, ContestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more Contests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Contests
+     * const contest = await prisma.contest.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends ContestUpdateManyArgs>(args: Prisma.SelectSubset<T, ContestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more Contests and returns the data updated in the database.
+     * @param {ContestUpdateManyAndReturnArgs} args - Arguments to update many Contests.
+     * @example
+     * // Update many Contests
+     * const contest = await prisma.contest.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Contests and only return the `id`
+     * const contestWithIdOnly = await prisma.contest.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends ContestUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, ContestUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContestPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Create or update one Contest.
+     * @param {ContestUpsertArgs} args - Arguments to update or create a Contest.
+     * @example
+     * // Update or create a Contest
+     * const contest = await prisma.contest.upsert({
+     *   create: {
+     *     // ... data to create a Contest
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Contest we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ContestUpsertArgs>(args: Prisma.SelectSubset<T, ContestUpsertArgs<ExtArgs>>): Prisma.Prisma__ContestClient<runtime.Types.Result.GetResult<Prisma.$ContestPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Count the number of Contests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContestCountArgs} args - Arguments to filter Contests to count.
+     * @example
+     * // Count the number of Contests
+     * const count = await prisma.contest.count({
+     *   where: {
+     *     // ... the filter for the Contests we want to count
+     *   }
+     * })
+    **/
+    count<T extends ContestCountArgs>(args?: Prisma.Subset<T, ContestCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], ContestCountAggregateOutputType> : number>;
+    /**
+     * Allows you to perform aggregations operations on a Contest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ContestAggregateArgs>(args: Prisma.Subset<T, ContestAggregateArgs>): Prisma.PrismaPromise<GetContestAggregateType<T>>;
+    /**
+     * Group by Contest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+    **/
+    groupBy<T extends ContestGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: ContestGroupByArgs['orderBy'];
+    } : {
+        orderBy?: ContestGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, ContestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetContestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the Contest model
+     */
+    readonly fields: ContestFieldRefs;
+}
+/**
+ * The delegate class that acts as a "Promise-like" for Contest.
+ * Why is this prefixed with `Prisma__`?
+ * Because we want to prevent naming conflicts as mentioned in
+ * https://github.com/prisma/prisma-client-js/issues/707
+ */
+export interface Prisma__ContestClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    submission<T extends Prisma.Contest$submissionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Contest$submissionArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    problem<T extends Prisma.Contest$problemArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Contest$problemArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContestProblemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    contestSubmission<T extends Prisma.Contest$contestSubmissionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Contest$contestSubmissionArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContestSubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+/**
+ * Fields of the Contest model
+ */
+export interface ContestFieldRefs {
+    readonly id: Prisma.FieldRef<"Contest", 'String'>;
+    readonly title: Prisma.FieldRef<"Contest", 'String'>;
+    readonly description: Prisma.FieldRef<"Contest", 'String'>;
+    readonly startTime: Prisma.FieldRef<"Contest", 'DateTime'>;
+    readonly hidden: Prisma.FieldRef<"Contest", 'Boolean'>;
+    readonly endTime: Prisma.FieldRef<"Contest", 'DateTime'>;
+    readonly createdAt: Prisma.FieldRef<"Contest", 'DateTime'>;
+    readonly updatedAt: Prisma.FieldRef<"Contest", 'DateTime'>;
+    readonly leaderBoard: Prisma.FieldRef<"Contest", 'Boolean'>;
+}
+/**
+ * Contest findUnique
+ */
+export type ContestFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contest
+     */
+    select?: Prisma.ContestSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Contest
+     */
+    omit?: Prisma.ContestOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ContestInclude<ExtArgs> | null;
+    /**
+     * Filter, which Contest to fetch.
+     */
+    where: Prisma.ContestWhereUniqueInput;
+};
+/**
+ * Contest findUniqueOrThrow
+ */
+export type ContestFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contest
+     */
+    select?: Prisma.ContestSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Contest
+     */
+    omit?: Prisma.ContestOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ContestInclude<ExtArgs> | null;
+    /**
+     * Filter, which Contest to fetch.
+     */
+    where: Prisma.ContestWhereUniqueInput;
+};
+/**
+ * Contest findFirst
+ */
+export type ContestFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contest
+     */
+    select?: Prisma.ContestSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Contest
+     */
+    omit?: Prisma.ContestOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ContestInclude<ExtArgs> | null;
+    /**
+     * Filter, which Contest to fetch.
+     */
+    where?: Prisma.ContestWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Contests to fetch.
+     */
+    orderBy?: Prisma.ContestOrderByWithRelationInput | Prisma.ContestOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for Contests.
+     */
+    cursor?: Prisma.ContestWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Contests from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Contests.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of Contests.
+     */
+    distinct?: Prisma.ContestScalarFieldEnum | Prisma.ContestScalarFieldEnum[];
+};
+/**
+ * Contest findFirstOrThrow
+ */
+export type ContestFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contest
+     */
+    select?: Prisma.ContestSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Contest
+     */
+    omit?: Prisma.ContestOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ContestInclude<ExtArgs> | null;
+    /**
+     * Filter, which Contest to fetch.
+     */
+    where?: Prisma.ContestWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Contests to fetch.
+     */
+    orderBy?: Prisma.ContestOrderByWithRelationInput | Prisma.ContestOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for Contests.
+     */
+    cursor?: Prisma.ContestWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Contests from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Contests.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of Contests.
+     */
+    distinct?: Prisma.ContestScalarFieldEnum | Prisma.ContestScalarFieldEnum[];
+};
+/**
+ * Contest findMany
+ */
+export type ContestFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contest
+     */
+    select?: Prisma.ContestSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Contest
+     */
+    omit?: Prisma.ContestOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ContestInclude<ExtArgs> | null;
+    /**
+     * Filter, which Contests to fetch.
+     */
+    where?: Prisma.ContestWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Contests to fetch.
+     */
+    orderBy?: Prisma.ContestOrderByWithRelationInput | Prisma.ContestOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing Contests.
+     */
+    cursor?: Prisma.ContestWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Contests from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Contests.
+     */
+    skip?: number;
+    distinct?: Prisma.ContestScalarFieldEnum | Prisma.ContestScalarFieldEnum[];
+};
+/**
+ * Contest create
+ */
+export type ContestCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contest
+     */
+    select?: Prisma.ContestSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Contest
+     */
+    omit?: Prisma.ContestOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ContestInclude<ExtArgs> | null;
+    /**
+     * The data needed to create a Contest.
+     */
+    data: Prisma.XOR<Prisma.ContestCreateInput, Prisma.ContestUncheckedCreateInput>;
+};
+/**
+ * Contest createMany
+ */
+export type ContestCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Contests.
+     */
+    data: Prisma.ContestCreateManyInput | Prisma.ContestCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+/**
+ * Contest createManyAndReturn
+ */
+export type ContestCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contest
+     */
+    select?: Prisma.ContestSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Contest
+     */
+    omit?: Prisma.ContestOmit<ExtArgs> | null;
+    /**
+     * The data used to create many Contests.
+     */
+    data: Prisma.ContestCreateManyInput | Prisma.ContestCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+/**
+ * Contest update
+ */
+export type ContestUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contest
+     */
+    select?: Prisma.ContestSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Contest
+     */
+    omit?: Prisma.ContestOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ContestInclude<ExtArgs> | null;
+    /**
+     * The data needed to update a Contest.
+     */
+    data: Prisma.XOR<Prisma.ContestUpdateInput, Prisma.ContestUncheckedUpdateInput>;
+    /**
+     * Choose, which Contest to update.
+     */
+    where: Prisma.ContestWhereUniqueInput;
+};
+/**
+ * Contest updateMany
+ */
+export type ContestUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Contests.
+     */
+    data: Prisma.XOR<Prisma.ContestUpdateManyMutationInput, Prisma.ContestUncheckedUpdateManyInput>;
+    /**
+     * Filter which Contests to update
+     */
+    where?: Prisma.ContestWhereInput;
+    /**
+     * Limit how many Contests to update.
+     */
+    limit?: number;
+};
+/**
+ * Contest updateManyAndReturn
+ */
+export type ContestUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contest
+     */
+    select?: Prisma.ContestSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Contest
+     */
+    omit?: Prisma.ContestOmit<ExtArgs> | null;
+    /**
+     * The data used to update Contests.
+     */
+    data: Prisma.XOR<Prisma.ContestUpdateManyMutationInput, Prisma.ContestUncheckedUpdateManyInput>;
+    /**
+     * Filter which Contests to update
+     */
+    where?: Prisma.ContestWhereInput;
+    /**
+     * Limit how many Contests to update.
+     */
+    limit?: number;
+};
+/**
+ * Contest upsert
+ */
+export type ContestUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contest
+     */
+    select?: Prisma.ContestSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Contest
+     */
+    omit?: Prisma.ContestOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ContestInclude<ExtArgs> | null;
+    /**
+     * The filter to search for the Contest to update in case it exists.
+     */
+    where: Prisma.ContestWhereUniqueInput;
+    /**
+     * In case the Contest found by the `where` argument doesn't exist, create a new Contest with this data.
+     */
+    create: Prisma.XOR<Prisma.ContestCreateInput, Prisma.ContestUncheckedCreateInput>;
+    /**
+     * In case the Contest was found with the provided `where` argument, update it with this data.
+     */
+    update: Prisma.XOR<Prisma.ContestUpdateInput, Prisma.ContestUncheckedUpdateInput>;
+};
+/**
+ * Contest delete
+ */
+export type ContestDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contest
+     */
+    select?: Prisma.ContestSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Contest
+     */
+    omit?: Prisma.ContestOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ContestInclude<ExtArgs> | null;
+    /**
+     * Filter which Contest to delete.
+     */
+    where: Prisma.ContestWhereUniqueInput;
+};
+/**
+ * Contest deleteMany
+ */
+export type ContestDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which Contests to delete
+     */
+    where?: Prisma.ContestWhereInput;
+    /**
+     * Limit how many Contests to delete.
+     */
+    limit?: number;
+};
+/**
+ * Contest.submission
+ */
+export type Contest$submissionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Submission
+     */
+    select?: Prisma.SubmissionSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Submission
+     */
+    omit?: Prisma.SubmissionOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.SubmissionInclude<ExtArgs> | null;
+    where?: Prisma.SubmissionWhereInput;
+    orderBy?: Prisma.SubmissionOrderByWithRelationInput | Prisma.SubmissionOrderByWithRelationInput[];
+    cursor?: Prisma.SubmissionWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.SubmissionScalarFieldEnum | Prisma.SubmissionScalarFieldEnum[];
+};
+/**
+ * Contest.problem
+ */
+export type Contest$problemArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContestProblem
+     */
+    select?: Prisma.ContestProblemSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ContestProblem
+     */
+    omit?: Prisma.ContestProblemOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ContestProblemInclude<ExtArgs> | null;
+    where?: Prisma.ContestProblemWhereInput;
+    orderBy?: Prisma.ContestProblemOrderByWithRelationInput | Prisma.ContestProblemOrderByWithRelationInput[];
+    cursor?: Prisma.ContestProblemWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.ContestProblemScalarFieldEnum | Prisma.ContestProblemScalarFieldEnum[];
+};
+/**
+ * Contest.contestSubmission
+ */
+export type Contest$contestSubmissionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContestSubmission
+     */
+    select?: Prisma.ContestSubmissionSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ContestSubmission
+     */
+    omit?: Prisma.ContestSubmissionOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ContestSubmissionInclude<ExtArgs> | null;
+    where?: Prisma.ContestSubmissionWhereInput;
+    orderBy?: Prisma.ContestSubmissionOrderByWithRelationInput | Prisma.ContestSubmissionOrderByWithRelationInput[];
+    cursor?: Prisma.ContestSubmissionWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.ContestSubmissionScalarFieldEnum | Prisma.ContestSubmissionScalarFieldEnum[];
+};
+/**
+ * Contest without action
+ */
+export type ContestDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contest
+     */
+    select?: Prisma.ContestSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Contest
+     */
+    omit?: Prisma.ContestOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ContestInclude<ExtArgs> | null;
+};
+export {};
+//# sourceMappingURL=Contest.d.ts.map
